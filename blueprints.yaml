@@ -1,0 +1,157 @@
+name: Piwik Admin Analytics
+version: 1.0.0
+description: "Easily integrate and configure Piwik Analytics without the need to touch any code within your site. Includes a handy in-Grav view of your piwik dashboard."
+icon: bar-chart
+author:
+  name: URBANSQUID
+  email: info@urbansquid.london
+  url: http://urbansquid.london
+homepage:
+keywords: piwik, plugin, tracking, analytics, grav, admin plugin
+bugs:
+docs:
+license: MIT
+
+form:
+  validation: strict
+  fields:
+
+    tabs:
+      type: tabs
+      active: 1
+      class: subtle
+
+      fields:
+
+        configuration:
+          type: tab
+          title: PLUGIN_PIWIKADMIN.SECTION_CONFIGURATION
+          fields:
+
+            enabled:
+              type: toggle
+              label: PLUGIN_PIWIKADMIN.PLUGIN_STATUS
+              hightlight: 1
+              default: 1
+              options:
+                1: PLUGIN_PIWIKADMIN.ENABLED
+                0: PLUGIN_PIWIKADMIN.DISABLED
+              validate:
+                type: bool
+
+            trackingId:
+              type: text
+              size: small
+              label: PLUGIN_PIWIKADMIN.TRACKING_ID
+              help: PLUGIN_PIWIKADMIN.TRACKING_ID_HELP
+              placeholder: "1"
+              validate:
+                required: true
+
+            hosted_url:
+              type: text
+              size: medium
+              label: PLUGIN_PIWIKADMIN.HOST_URL
+              help: PLUGIN_PIWIKADMIN.HOST_URL_HELP
+              placeholder: "https://yourwebsite.com/piwik/"
+              validate:
+                required: true
+
+            token_auth:
+              type: text
+              size: medium
+              label: PLUGIN_PIWIKADMIN.TOKEN_AUTH
+              help: PLUGIN_PIWIKADMIN.TOKEN_AUTH_HELP
+              placeholder: PLUGIN_PIWIKADMIN.TOKEN_AUTH_PLACEHOLDER
+              validate:
+                required: true
+
+        options:
+          type: tab
+          title: PLUGIN_PIWIKADMIN.SECTION_OPTIONS
+          fields:
+
+            track_subdomains:
+              type: toggle
+              label: PLUGIN_PIWIKADMIN.TRACK_SUBDOMAINS
+              help: PLUGIN_PIWIKADMIN.TRACK_SUBDOMAINS_HELP
+              hightlight: 1
+              default: 0
+              options:
+                1: PLUGIN_PIWIKADMIN._YES
+                0: PLUGIN_PIWIKADMIN._NO
+              validate:
+                type: bool
+
+            prepend_domain:
+              type: toggle
+              label: PLUGIN_PIWIKADMIN.PREPEND_DOMAIN
+              help: PLUGIN_PIWIKADMIN.PREPEND_DOMAIN_HELP
+              hightlight: 1
+              default: 0
+              options:
+                1: PLUGIN_PIWIKADMIN._YES
+                0: PLUGIN_PIWIKADMIN._NO
+              validate:
+                type: bool
+
+            hide_alias:
+              type: toggle
+              label: PLUGIN_PIWIKADMIN.HIDE_ALIAS
+              help: PLUGIN_PIWIKADMIN.HIDE_ALIAS_HELP
+              hightlight: 1
+              default: 0
+              options:
+                1: PLUGIN_PIWIKADMIN._YES
+                0: PLUGIN_PIWIKADMIN._NO
+              validate:
+                type: bool
+
+            track_disabled_js:
+              type: toggle
+              label: PLUGIN_PIWIKADMIN.TRACK_DISABLED_JS
+              hightlight: 1
+              default: 0
+              options:
+                1: PLUGIN_PIWIKADMIN._YES
+                0: PLUGIN_PIWIKADMIN._NO
+              validate:
+                type: bool
+
+
+        advanced:
+          type: tab
+          title: PLUGIN_PIWIKADMIN.SECTION_ADVANCED
+          fields:
+
+            track_custom_vars:
+              type: array
+              size: large
+              label: PLUGIN_PIWIKADMIN.TRACK_CUSTOM_VARS
+              help: PLUGIN_PIWIKADMIN.TRACK_CUSTOM_VARS_HELP
+              placeholder_key: PLUGIN_PIWIKADMIN.TRACK_CUSTOM_VARS_PLACEHOLDER_1
+              placeholder_value: PLUGIN_PIWIKADMIN.TRACK_CUSTOM_VARS_PLACEHOLDER_2
+
+            do_not_track:
+              type: toggle
+              label: PLUGIN_PIWIKADMIN.DO_NOT_TRACK
+              help: PLUGIN_PIWIKADMIN.DO_NOT_TRACK_HELP
+              hightlight: 1
+              default: 0
+              options:
+                1: PLUGIN_PIWIKADMIN._YES
+                0: PLUGIN_PIWIKADMIN._NO
+              validate:
+                type: bool
+
+            disable_tracking_cookies:
+              type: toggle
+              label: PLUGIN_PIWIKADMIN.DISABLE_TRACKING_COOKIES
+              help: PLUGIN_PIWIKADMIN.DISABLE_TRACKING_COOKIES_HELP
+              hightlight: 1
+              default: 0
+              options:
+                1: PLUGIN_PIWIKADMIN._YES
+                0: PLUGIN_PIWIKADMIN._NO
+              validate:
+                type: bool

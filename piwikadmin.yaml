@@ -1,0 +1,13 @@
+enabled: disabled               # Global enable/disable the entire plugin
+hosted_url: ""              # The url where your piwik is hosted
+trackingId: 1              # PIWIK Tracking ID `REQUIRED`
+token_auth: ""              # PIWIK Token AUTH `REQUIRED`
+
+track_subdomains: false     # Track visitors across all subdomains
+prepend_domain: false       # Prepend the site domain to the page title when tracking
+hide_alias: false          # In the "Outlinks" report, hide clicks to known alias URLs of SITE
+track_disabled_js: false   # Track users with JavaScript disabled
+
+track_custom_vars: false   # Track custom variables for this visitor
+do_not_track: false         # Enable client side DoNotTrack detection
+disable_tracking_cookies: false
