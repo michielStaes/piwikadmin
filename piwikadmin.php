@@ -142,7 +142,9 @@ class PiwikAdminPlugin extends Plugin
         if (empty($hosted_url)) return;
 
         $code = $this->getTrackingCode();
-        $this->grav['assets']->addInlineJs($code);
+        if($this->config->get('plugins.piwikadmin.enable_site')) {
+            $this->grav['assets']->addInlineJs($code);
+        }
     }
 
     /**

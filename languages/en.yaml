@@ -4,6 +4,8 @@ PLUGIN_PIWIKADMIN:
   ENABLED: "Enabled"
   DISABLED: "Disabled"
   PLUGIN_STATUS: "Plugin Status"
+  ENABLE_SITE: "Enable Piwik JS Code"
+  ENABLE_SITE_HELP: "Enable the insertion of JS tracking code on the user side site."
   SECTION_CONFIGURATION: "Configuration"
   SECTION_ADVANCED: "Advanced"
   SECTION_OPTIONS: "Options"
