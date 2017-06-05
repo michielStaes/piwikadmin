@@ -1,90 +1,91 @@
-# Grav Google Analytics Plugin
+# Grav Admin Piwik Analytics Plugin
 
-The **Google Analytics** Plugin for [Grav CMS](http://github.com/getgrav/grav) allows you to integrate and configure [Google Analytics](https://www.google.com/analytics) without the need to touch any code within your Grav site.
+The **Piwik Admin** Plugin for [Grav CMS](http://github.com/getgrav/grav) allows you to integrate and configure [Piwik Analytics](https://piwik.org/) without the need to touch any code within your Grav site.
 
 ### Features
-* Preload the Google Analytics script asynchronously
-* IP Anonymization
-* Choose the Google Analytics code position in the HTML document (head or body).
-* Force SSL (HTTPS). Send all data using SSL, even from insecure (HTTP) pages.
-* Renaming of the Global (ga) Object
-* Debug Mode with Trace Debugging
-* Custom Cookie Configuration. Name, domain and expiration time are configurable.
-* Blocking IP Addresses
-* Multi-Language Support for the [Grav Administration Panel](https://github.com/getgrav/grav-plugin-admin)
+* Access your Piwik data on your Grav Admin Plugin
+* Manage multiple dashboards
+* Use Token Authentication
+* Preload the Piwik Analytics script asynchronously
+* Track Visitors across subdomains
+* Track Users without Javascript
+* Custom Variables support.
+* Client Side "DoNotTrack" detection
+* Disable tracking Cookies
+* Multi-Language Support for the [Grav Administration Panel](https://github.com/getgrav/grav-plugin-admin) - WORK IN PROGRESS
 
 ## Installation
 
-Installing the Google Analytics plugin can be done in one of two ways. The GPM (Grav Package Manager) installation method enables you to quickly and easily install the plugin with a simple terminal command, while the manual method enables you to do so via a zip file.
+Installing the Piwik Admin plugin can be done in one of two ways. The GPM (Grav Package Manager) installation method enables you to quickly and easily install the plugin with a simple terminal command, while the manual method enables you to do so via a zip file.
 
 ### GPM Installation (Preferred)
 
 The simplest way to install this plugin is via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm) through your system's terminal (also called the command line).  From the root of your Grav install type:
 
-    bin/gpm install ganalytics
+    bin/gpm install piwikadmin
 
-This will install the Google Analytics plugin into your `/user/plugins` directory within Grav. Its files can be found under `/your/site/grav/user/plugins/ganalytics`.
+This will install the Google Analytics plugin into your `/user/plugins` directory within Grav. Its files can be found under `/your/site/grav/user/plugins/piwikadmin`.
 
 ### Manual Installation
 
-To install this plugin, just download the zip version of this repository and unzip it under `/your/site/grav/user/plugins`. Then, rename the folder to `ganalytics`. You can find these files on [GitHub](https://github.com/escopecz/grav-ganalytics) or via [GetGrav.org](http://getgrav.org/downloads/plugins).
+To install this plugin, just download the zip version of this repository and unzip it under `/your/site/grav/user/plugins`. Then, rename the folder to `piwikadmin`. You can find these files on [GitHub](https://github.com/ricardo118/piwikadmin) or via [GetGrav.org](http://getgrav.org/downloads/plugins).
 
 You should now have all the plugin files under
 
-    /your/site/grav/user/plugins/ganalytics
-	
+    /your/site/grav/user/plugins/piwikadmin
+
 > NOTE: This plugin is a modular component for Grav which requires [Grav](http://github.com/getgrav/grav) to operate.
 
 ## Configuration
 
-Before configuring this plugin, you should copy the `user/plugins/ganalytics/ganalytics.yaml` to `user/config/plugins/ganalytics.yaml` and only edit that copy.
+> NOTE: Recommended way of configuration is via The [Grav Administration Panel](https://github.com/getgrav/grav-plugin-admin).
+
+
+Before configuring this plugin, you should copy the `user/plugins/piwikadmin/piwikadmin.yaml` to `user/config/plugins/piwikadmin.yaml` and only edit that copy.
 
 Here is the default configuration and an explanation of available options:
 
 ```yaml
-enabled: true
-trackingId: ""
+enabled: disabled
+hosted_url: ""
+trackingId: 1
+token_auth: ""
 
-position: "head"
-objectName: "ga"
-forceSsl: false
-async: false
-anonymizeIp: false
-blockedIps: []
+track_subdomains: false
+prepend_domain: false
+hide_alias: false
+track_disabled_js: false
 
-cookieConfig: false
-cookieName: "_ga"
-cookieDomain: ""
-cookieExpires: 63072000
-
-debugStatus: false
-debugTrace: false
+track_custom_vars: false
+do_not_track: false
+disable_tracking_cookies: false
 ```
 
-* `enabled` Toggles if the Google Analytics plugin is turned on or off.
-* `trackingId` The Google Analytics Tracking ID. This value is **required**.
+* `enabled` Global enable/disable the entire plugin
 
-* `position` Code Position in the HTML document (`head` or `body`). Default is `head`.
-* `async` Toggles if the Google Analytics script is preloaded asynchronously.
-* `forceSsl` Toggles if Google Analytics should send all data using HTTPS.
-* `objectName` The name for the global (ga) object. Default is `ga`.
-* `anonymizeIp` Toggles if Google Analytics will anonymize the IP address for all hits.
-* `blockedIps` Here you can blacklist IP addresses. For those the Google Analytics script will not be embedded.
+* `hosted_url` The URL where your piwik is hosted on. Use Http:// or Https://. This value is **required**.
+* `trackingId` PIWIK Tracking ID. This value is **required**.
+* `token_auth` PIWIK Token AUTH. This value is **required**.
 
-* `cookieConfig`: Toggles if the a custom cookie configuration should be used.
-* `cookieName` The cookie name. Default ist `_ga`
-* `cookieDomain`  The cookie domain.
-* `cookieExpires` The cookie expiration time in seconds. Google default is 2 years (`63072000` seconds)
+* `track_subdomains` Track visitors across all subdomains. So if one visitor visits x.example.com and y.example.com, they will be counted as a unique visitor.
+* `prepend_domain` Prepend the site domain to the page title when tracking. So if someone visits the 'About' page on blog.example.com it will be recorded as 'blog / About'. This is the easiest way to get an overview of your traffic by sub-domain.
+* `hide_alias` In the "Outlinks" report, hide clicks to known alias URLs of SITE.
+* `track_disabled_js` Track users with JavaScript disabled.
 
-* `debugStatus` Toggles if the debug version of Google Analytics is enabled or disabled.
-* `debugTrace` Toggles if the debugger will output more verbose information to the console. `debugStatus` must be enabled.
+* `track_custom_vars` Track custom variables for this visitor. For example, with variable name 'Type' and value 'Customer'. MAXIMUM 5 Variables.
+* `do_not_track` Enable client side DoNotTrack detection
+* `disable_tracking_cookies`: Disables Tracking Cookies.
 
 ## Usage
 
-1. Sign in to your [Google Analytics account](https://www.google.com/analytics/web/#home).
-2. Select the **Admin** tab.
-3. Select an account from the dropdown in the _ACCOUNT_ column.
-4. Select a property from the dropdown in the _PROPERTY_ column.
-5. Under _PROPERTY_, click **Tracking Info > Tracking Code**.
-6. Copy the **Tracking ID** (a string like _UA-000000-01_)
-7. Add it to the configuration of this plugin.
+> NOTE: This plugin assumes you already have piwik hosted somewhere. If you don't have piwik hosted, you can follow this guide to do so [Piwik Install Guide](https://piwik.org/docs/installation-optimization/).
+
+
+1. Access and Login (use a Super User) to your Piwik Installation E.g. http://yourwebsite.com/piwik
+2. Select the **Settings** menu.
+3. Select **Settings** on the sidebar menu under **Personal**
+4. Find your **API Authentication Token** and take a note of this. You will need it to configure your plugin.
+5. Under **Websites** > **Manage** you will see a list of your websites. If you have not yet added your Grav website as a new website, please do so.
+6. Find your Grav Site on the list and make a note of the **ID** value, you will need this to configure your plugin.
+7. Add **API Authentication Token, ID** to the configuration of this plugin.
+8. Add the URL of your installation. In this example, http://yourwebsite.com/piwik to the plugin configuration

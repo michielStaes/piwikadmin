@@ -48,7 +48,6 @@ class PiwikAdminPlugin extends Plugin
     private function getUserConfiguration(){
 
         $piwikconfig = [
-          'track_subdomain'          => $this->config->get('plugins.piwikadmin.track_subdomains', false),
           'prepend_domain'           => $this->config->get('plugins.piwikadmin.prepend_domain', false),
           'hide_alias'               => $this->config->get('plugins.piwikadmin.hide_alias', false),
           'track_disabled_js'        => $this->config->get('plugins.piwikadmin.track_disabled_js', false),
