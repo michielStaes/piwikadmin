@@ -10,8 +10,8 @@
         <main id="admin-main" class="stats" >
 
             <div class="content-wrapper">
-                <div class="content-padding">
-                    <iframe class="stats-frame" scrolling="no" src="{{ config.plugins.piwikadmin.hosted_url }}index.php?module=Widgetize&action=iframe&moduleToWidgetize=Dashboard&actionToWidgetize=index&idSite={{ config.plugins.piwikadmin.trackingId }}&token_auth={{ config.plugins.piwikadmin.token_auth }}&period=week&date=yesterday" frameborder="0" marginheight="0" marginwidth="0" width="100%" height="100vh"></iframe>
+                <div class="content-padding" style="overflow:hidden;padding:10px 0 0 25px !important;">
+                    <iframe class="stats-frame" scrolling="yes" src="{{ config.plugins.piwikadmin.hosted_url }}index.php?module=Widgetize&action=iframe&moduleToWidgetize=Dashboard&actionToWidgetize=index&idSite={{ config.plugins.piwikadmin.trackingId }}&token_auth={{ config.plugins.piwikadmin.token_auth }}&period=week&date=yesterday" frameborder="0" marginheight="0" marginwidth="0" width="100%" height="100vh"></iframe>
                 </div>
             </div>
 
