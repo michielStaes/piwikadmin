@@ -1,4 +1,5 @@
 enabled: disabled               # Global enable/disable the entire plugin
+enable_site: true
 hosted_url: ""              # The url where your piwik is hosted
 trackingId: 1              # PIWIK Tracking ID `REQUIRED`
 token_auth: ""              # PIWIK Token AUTH `REQUIRED`

@@ -39,6 +39,18 @@ form:
               validate:
                 type: bool
 
+            enable_site:
+              type: toggle
+              label: PLUGIN_PIWIKADMIN.ENABLE_SITE
+              help: PLUGIN_PIWIKADMIN.ENABLE_SITE_HELP
+              hightlight: 1
+              default: 1
+              options:
+                1: PLUGIN_PIWIKADMIN.ENABLED
+                0: PLUGIN_PIWIKADMIN.DISABLED
+              validate:
+                type: bool
+
             trackingId:
               type: text
               size: small

@@ -110,10 +110,11 @@ class PiwikAdminPlugin extends Plugin
         $code .= "_paq.push(['enableLinkTracking']);\n";
         $code .= "(function() {\n";
         $code .= "var u='//".$hosted_url."';\n";
-        $code .= "_paq.push(['setTrackerUrl', u+'piwik.php']);\n";
+        $code .= "_paq.push(['setTrackerUrl', u+'js/']);\n";
+        $code .= "_paq.push(['setAPIUrl', u]);\n";
         $code .= "_paq.push(['setSiteId', '".$setup['trackingId']."']);\n";
         $code .= "var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];\n";
-        $code .= "g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);\n";
+        $code .= "g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'js/'; s.parentNode.insertBefore(g,s);\n";
         $code .= "})();\n";
 
 //        if($options['track_disabled_js']) {
@@ -142,7 +143,9 @@ class PiwikAdminPlugin extends Plugin
         if (empty($hosted_url)) return;
 
         $code = $this->getTrackingCode();
-        $this->grav['assets']->addInlineJs($code);
+        if($this->config->get('plugins.piwikadmin.enable_site')) {
+            $this->grav['assets']->addInlineJs($code);
+        }
     }
 
     /**
